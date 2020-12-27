@@ -18,7 +18,6 @@ script:
   - cd backend
   - serverless deploy
   - cd ..
-
   - docker --version
   - docker build -t fjacky/todofrontend client/
 
