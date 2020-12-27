@@ -5,14 +5,12 @@ node_js:
 services:
   - docker
 
-# Pre-testing installs
 install:
-  - npm install -g serverless
   - cd backend
+  - npm install -g serverless
   - travis_retry npm install
   - cd ..
 
-# Scripts to be run such as tests
 before_script:
   - echo "no tests"
 
