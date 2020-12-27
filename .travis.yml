@@ -1,0 +1,28 @@
+language: node_js
+node_js:
+  - 13
+
+services:
+  - docker
+
+# Pre-testing installs
+install:
+  - npm i -g serverless
+  - npm install
+  - travis_retry npm install
+
+# Scripts to be run such as tests
+before_script:
+  - echo "no tests"
+
+script:
+  - cd backend
+  - serverless deploy
+  - cd ..
+
+  - docker --version
+  - docker build -t fjacky/todofrontend
+
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push fjacky/todofrontend
