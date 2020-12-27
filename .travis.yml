@@ -21,7 +21,7 @@ script:
   - cd ..
 
   - docker --version
-  - docker build -t fjacky/todofrontend
+  - docker build -t fjacky/todofrontend .
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
